@@ -1,0 +1,25 @@
+{
+    "metadata": {
+        "createdAt": "2023-01-01",
+        "version": 2
+    },
+    "items": [
+        {
+            "id": 1,
+            "name": "First item",
+            "properties": {
+                "color": "red",
+                "size": "large"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Second item",
+            "properties": {
+                "color": "blue",
+                "size": "small"
+            }
+        }
+    ],
+    "tags": ["test", "example", "nested"]
+}
