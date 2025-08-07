@@ -1,6 +1,6 @@
 """Tests for naming convention conversion functions."""
 
-from json2pyclass.naming import camel_to_snake, snake_to_pascal
+from json2pytype.naming import camel_to_snake, snake_to_pascal
 
 
 def test_camel_to_snake_basic():

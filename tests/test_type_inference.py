@@ -1,6 +1,6 @@
 """Tests for type inference functions."""
 
-from json2pyclass.type_inference import get_python_type
+from json2pytype.type_inference import get_python_type
 
 
 def test_get_python_type_basic_types():

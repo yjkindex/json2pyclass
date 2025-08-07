@@ -1,7 +1,7 @@
 """Tests for code generator."""
 
-from json2pyclass.structure_analyzer import analyze_json_structure
-from json2pyclass.code_generator import generate_class_code
+from json2pytype.structure_analyzer import analyze_json_structure
+from json2pytype.code_generator import generate_class_code
 
 
 def test_generate_simple_class():

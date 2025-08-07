@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from json2pyclass.structure_analyzer import analyze_json_structure
+from json2pytype.structure_analyzer import analyze_json_structure
 
 
 def test_analyze_simple_json():
