@@ -52,23 +52,23 @@ def generate_class_code(class_info: Dict[str, Any], imported_classes: Set[str] =
     for field_name, field_info in class_info["fields"].items():
         # Convert snake_case back to camelCase for JSON key
         json_key = field_name
-        if '_' in field_name:
-            json_key = ''.join(word.capitalize() for word in field_name.split('_'))
-            json_key = json_key[0].lower() + json_key[1:]
+        # if '_' in field_name:
+        #     json_key = ''.join(word.capitalize() for word in field_name.split('_'))
+        #     json_key = json_key[0].lower() + json_key[1:]
         
         if field_info["is_custom_class"]:
             # Initialize custom class
-            code.append(f"        self.{field_name} = {field_info['type']}(data.get('{json_key}', {{}}))")
+            code.append(f"        self.{field_name} = {field_info['type']}(data.get('{json_key}', {{}}) or {{}})")
         elif field_info["is_list"]:
             if field_info["list_element_is_custom"]:
                 # Initialize list of custom classes
                 code.append(f"        self.{field_name} = [")
                 code.append(f"            {field_info['list_element_type']}(item) "
-                            f"for item in data.get('{json_key}', [])")
+                            f"for item in data.get('{json_key}', []) or []")
                 code.append(f"        ]")
             else:
                 # Initialize list of basic types
-                code.append(f"        self.{field_name} = data.get('{json_key}', [])")
+                code.append(f"        self.{field_name} = data.get('{json_key}', []) or []")
         else:
             # Initialize basic type
             code.append(f"        self.{field_name} = data.get('{json_key}')")
@@ -81,9 +81,9 @@ def generate_class_code(class_info: Dict[str, Any], imported_classes: Set[str] =
     for field_name, field_info in class_info["fields"].items():
         # Convert snake_case back to camelCase for JSON key
         json_key = field_name
-        if '_' in field_name:
-            json_key = ''.join(word.capitalize() for word in field_name.split('_'))
-            json_key = json_key[0].lower() + json_key[1:]
+        # if '_' in field_name:
+        #     json_key = ''.join(word.capitalize() for word in field_name.split('_'))
+        #     json_key = json_key[0].lower() + json_key[1:]
             
         if field_info["is_custom_class"]:
             code.append(f"        result['{json_key}'] = self.{field_name}() if self.{field_name} else None")
